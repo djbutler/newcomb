@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="newcombApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="newcomb.js"></script>
+    <link rel="stylesheet" href="newcomb.css">
+  </head>
+  <body>
+    <div ng-controller="NewcombController as newcomb">
+      <div ng-if="newcomb.thinking">
+        Making predictions for next round...
+      </div>
+      <div ng-if="!newcomb.thinking">
+        You can take one box, or both boxes{{newcomb.boxes[0].fixed ? '' : ', or neither'}}. I've made a secret prediction about which box(es) you'll take. I've also put a prize in Box 1, based on my prediction.
+      </div>
+      <ul class="unstyled">
+        <li ng-repeat="box in newcomb.boxes">
+          <input type="checkbox" ng-model="box.selected" ng-disabled="box.fixed">
+          <span class="selected-{{box.selected}}">{{box.text}}</span>
+        </li>
+      </ul>
+      <form ng-submit="newcomb.takeBoxes()">
+        <input class="btn-primary" type="submit" value="Take boxes!" ng-disabled="newcomb.thinking">
+      </form>
+        <p>Gains: $<span class="gains">{{newcomb.gains}}</span> </p>
+        <p>Total: $<span class="total">{{newcomb.total}}</span> (over {{newcomb.rounds}} rounds) </p>
+    </div>
+  </body>
+</html>
+
+

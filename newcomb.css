@@ -1,0 +1,19 @@
+.total {
+}
+
+.previousTotal {
+}
+
+.gains {
+  font-weight: bold;
+  color: green;
+}
+
+.selected-true {
+  font-weight: bold;
+}
+
+ul.unstyled {
+  list-style-type: none;
+  padding: 0px;
+}
